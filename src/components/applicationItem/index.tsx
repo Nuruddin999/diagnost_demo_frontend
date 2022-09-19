@@ -8,14 +8,14 @@ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import { RootState } from "../../app/store";
 import './style.applicationitem.scss'
 import DiagnosticForm from "./diagnostic/consiliumDoctors";
-import { saveApplicationItem } from "../../reducers/applicationItemSlice";
+import { initialState, saveApplicationItem } from "../../reducers/applicationItemSlice";
 import CheckupPlanForm from "./checkup_plans/checkupPlans";
 import Anamnesis from "./anamnesis";
 import PatientInfo from "./patientinfo";
 import MostProbDiagnosis from "./probable_diagnosis";
 import Comments from "./comments";
 import { getListItemAction } from "../../common/actions/common";
-import {  setUserItemStatus } from "../../reducers/ui";
+import { setUserItemStatus } from "../../reducers/ui";
 import { RoundLoader } from "../../common/components/roundloader";
 
 const ApplicationItem = (): React.ReactElement => {
@@ -31,6 +31,7 @@ const ApplicationItem = (): React.ReactElement => {
   }
   useEffect(() => {
     dispatch(getListItemAction(id, 'applications', saveApplicationItem))
+    return () => { dispatch(saveApplicationItem({ ...initialState, fundRequest: '', managerId: '', updatedAt: '', createdAt: '', ConsiliumDoctors:[], Comments:[{ title: 'Куда обратился пациент и с какой помощью', comment: '' }, { title: 'Что было им предоставлено, или наоборот, ничего не было предоставлено, только жалоюы и просьбы', comment: '' }, { title: 'Какая работа была проделана', comment: '' }, { title: 'Почему быоо рекомендовано то, или иное, на основании чего', comment: '' }, { title: 'Заключение: "По результатам проделанной работы считаю просьбу подопечного (ой) обоснованной (или нет) и возможной для одобрения (или нет)"', comment: '' }], Diagnostics:[], CheckupPlans:[] })) }
   }, [])
   useEffect(() => {
     if (userItemStatus === 'no') {
@@ -49,25 +50,25 @@ const ApplicationItem = (): React.ReactElement => {
         {errorMessage}
       </Typography>
     </div>}
-      <h2>РЕКОМЕНДАЦИИ ВРАЧА</h2>
-      <h4 className='only-for-inner-warning'>(ВНИМАНИЕ! ДОКУМЕНТ ИСКЛЮЧИТЕЛЬНО ДЛЯ ВНУТРЕННЕГО ПОЛЬЗОВАНИЯ ОРГАНИЗАЦИИ)
-      </h4>
-      <PatientInfo />
-      <h3>На основании: </h3>
-      <h5> (указать основания: жалобы, симптомы, синдромы подозрения врача и пр.) </h5>
-      <Anamnesis />
-      <ConsiliumDoctorsForm />
-      <DiagnosticForm />
-      <MostProbDiagnosis />
-      <h4>На основании проведенного консилиума рекомендован план обследования (ПО):</h4>
-      <CheckupPlanForm />
-      <Comments />
-      <Button onClick={handleClick} size='medium' variant='contained' className='save-button'>
-        Сохранить
-      </Button>
-      <a href={`/flpdf/${id}`} target='_blank' rel="noreferrer"><IconButton size='medium'>
-        <PictureAsPdfIcon className='only-for-inner-warning' />
-      </IconButton></a>
+    <h2>РЕКОМЕНДАЦИИ ВРАЧА</h2>
+    <h4 className='only-for-inner-warning'>(ВНИМАНИЕ! ДОКУМЕНТ ИСКЛЮЧИТЕЛЬНО ДЛЯ ВНУТРЕННЕГО ПОЛЬЗОВАНИЯ ОРГАНИЗАЦИИ)
+    </h4>
+    <PatientInfo />
+    <h3>На основании: </h3>
+    <h5> (указать основания: жалобы, симптомы, синдромы подозрения врача и пр.) </h5>
+    <Anamnesis />
+    <ConsiliumDoctorsForm />
+    <DiagnosticForm />
+    <MostProbDiagnosis />
+    <h4>На основании проведенного консилиума рекомендован план обследования (ПО):</h4>
+    <CheckupPlanForm />
+    <Comments />
+    <Button onClick={handleClick} size='medium' variant='contained' className='save-button'>
+      Сохранить
+    </Button>
+    <a href={`/flpdf/${id}`} target='_blank' rel="noreferrer"><IconButton size='medium'>
+      <PictureAsPdfIcon className='only-for-inner-warning' />
+    </IconButton></a>
   </div>
 }
 export default ApplicationItem

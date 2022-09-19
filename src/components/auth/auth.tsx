@@ -53,7 +53,7 @@ export const Auth = (): React.ReactElement => {
           <Loader title='Войти' isLoading={isCircular} />
         </Button>
       </form>
-      {user.role !== '' && <Redirect to='/' />}
+      {user.role !== '' && <Redirect to='/main/table' />}
     </div>
   </div>
 }

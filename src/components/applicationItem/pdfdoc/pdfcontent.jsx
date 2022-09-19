@@ -1,7 +1,7 @@
 import { Document, Page, PDFViewer, Text, StyleSheet, View, Font, Image } from '@react-pdf/renderer'
 import './style.pdfdoc.scss'
-import hopedoc from '../../../hopedoc.png'
-import sell from '../../../sign.jpeg'
+import hopedoc from '../../../logo.png'
+import sell from '../../../sell.jpg'
 import TimesNewRomanFont from '../../../TimesNewRomanPSMT.ttf'
 import TimesNewRomanBoldFont from '../../../TimesNewRomanPS-BoldMT.ttf'
 
@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
     fontSize: '11px',
     margin: '10px auto',
     paddingBottom: '10px',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems:'center'
   },
   hdrimg: {
     width: '150px'
@@ -259,9 +260,9 @@ function MyDocContent({ applItem, isDeletedPlace, status}) {
           <View style={{ ...styles.commonSize, ...styles.hdr, marginBottom: 5 }} fixed>
             <Image src={hopedoc} style={styles.hdrimg} />
             <View>
-              <Text>г Махачкала, ул Батырая 11</Text>
+              <Text>г Махачкала, ул Тестовая 11</Text>
               <Text>7 этаж 709 кабинет</Text>
-              <Text>Тел. +7(964)0067007</Text>
+              <Text>Тел. +7(999)00177707</Text>
             </View>
           </View>
           <Text style={styles.recomenTitle}>

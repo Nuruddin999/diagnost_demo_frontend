@@ -11,8 +11,9 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useHistory } from "react-router-dom";
 import { openModal, setStatus } from "../../reducers/ui";
 import isObject from "lodash/isObject";
-import { debounce } from "lodash";
+import { debounce, isEmpty } from "lodash";
 import { selectApplicationUserRights } from "../../common/selectors/user";
+import BlockIcon from '@mui/icons-material/Block';
 
 const ReportList = (): React.ReactElement => {
   const dispatch = useDispatch()
@@ -76,7 +77,7 @@ const ReportList = (): React.ReactElement => {
       </Button>}
     </div>
     <div className="appl-table">
-      <table>
+    <table>
       <thead>
         <tr>
           {tableData.map(el => (el !== 'Удалить' || rights.processedRights.applications?.delete) && (<th key={isObject(el) ? el.title : el}>
@@ -117,6 +118,7 @@ const ReportList = (): React.ReactElement => {
         </tbody>
       </table>
     </div>
+    {status === 'ok' && isEmpty(applications) &&  <div><BlockIcon sx={{fontSize:'40px',marginTop:'20px'}} /> </div>}
     {status === 'pending' && <div><CircularProgress /></div>}
     {status === 'no' && <Typography sx={{color:'red'}}>{errorMessage}</Typography>}
    { count>10 && <div className="pagination">
