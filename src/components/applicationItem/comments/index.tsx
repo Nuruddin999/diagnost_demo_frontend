@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { TextField, Typography } from "@mui/material";
 import { RootState } from "../../../app/store";
 import './style.comments.scss'
-import { changeComment, saveApplicationItem } from "../../../reducers/applicationItemSlice";
+import { changeComment } from "../../../reducers/applicationItemSlice";
 import { selectApplicationUserRights } from "../../../common/selectors/user";
-import { useEffect } from "hoist-non-react-statics/node_modules/@types/react";
+
 
 /**
  * Компонент пояснений.
@@ -15,7 +15,7 @@ const Comments = (): React.ReactElement => {
   const comments = useSelector((state: RootState) => state.applicationItem.comments)
   const { processedRights } = useSelector((state: RootState) => selectApplicationUserRights(state))
   const dispatch = useDispatch()
-  
+
   return <>
     <h4>Пояснения:</h4>
     <div className="comments-section">
