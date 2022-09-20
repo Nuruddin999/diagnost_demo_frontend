@@ -20,7 +20,7 @@ import UsersList from "../userslist/userslist";
 import UserItem from "../useritem";
 import { selectApplicationUserRights } from "../../common/selectors/user";
 import { RoundLoader } from "../../common/components/roundloader";
-
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const Dashboard = (): React.ReactElement => {
   const { user, hasSuperUser } = useSelector((state: RootState) => state.user)
@@ -34,7 +34,7 @@ const Dashboard = (): React.ReactElement => {
   }, [])
   return !hasSuperUser ? <Registration notHaveSuperUser /> : <div className="dashboard">
 
-    {name === '' ? <RoundLoader /> :  <div  className="dashboard" data-testid='dashboard'>
+    {name === '' ? <RoundLoader /> : <div className="dashboard" data-testid='dashboard'>
 
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -43,6 +43,14 @@ const Dashboard = (): React.ReactElement => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <div className="dasheader">
+        <Typography variant="body1" sx={{marginLeft:'20px'}}>
+          Demo
+        </Typography>
+        <div className="github-link">
+        <a href='https://github.com/Nuruddin999/diagnost_demo_frontend' target='_blank'  rel="noreferrer" >
+        <GitHubIcon />
+        </a>
+        </div>
         <div className='user-block'>
           <Link to='/main/aboutme'>
             <Typography variant="body1" >
