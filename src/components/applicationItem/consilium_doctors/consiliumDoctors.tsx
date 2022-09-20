@@ -4,7 +4,7 @@ import { RootState } from "../../../app/store";
 import { IconButton, TextField, Typography} from "@mui/material";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { changeConsiliumDoctors, saveConsiliumDoctors, deleteConsiliumDoctors } from "../../../reducers/applicationItemSlice";
+import {  saveConsiliumDoctors, deleteConsiliumDoctors } from "../../../reducers/applicationItemSlice";
 import './style.consiliumdoctors.scss'
 import NoResult from "../../no-result/no-result";
 import { selectApplicationUserRights } from "../../../common/selectors/user";
