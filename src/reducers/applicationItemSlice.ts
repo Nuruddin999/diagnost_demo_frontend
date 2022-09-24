@@ -132,8 +132,8 @@ export const applicationItemSlice = createSlice({
     saveComment: (state, action: PayloadAction<string>) => {
       state.comments = [...state.comments, { comment: action.payload }]
     },
-    changeComment: (state, action: PayloadAction<{ index: number, comment: string }>) => {
-      state.comments = state.comments.map((commentEl, commentIndex) => commentIndex === action.payload.index ? { ...commentEl,comment: action.payload.comment } : commentEl)
+    changeComment: (state, action: PayloadAction<{ title: string, comment: string }>) => {
+      state.comments = state.comments.map((commentEl, commentIndex) => commentEl.title === action.payload.title ? { ...commentEl,comment: action.payload.comment } : commentEl)
     },
     deleteComment: (state, action: PayloadAction<number>) => {
       state.comments = state.comments.filter((commentElm, index) => index !== action.payload)

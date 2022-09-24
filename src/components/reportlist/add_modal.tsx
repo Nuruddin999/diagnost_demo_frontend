@@ -55,7 +55,7 @@ const AddModal = (): React.ReactElement => {
         </div>
         <div className='form'>
           <TextField
-            placeholder='ФИО пациента'
+            placeholder='Patient name'
             size='small'
             value={patientName}
             onChange={(event: any) => setPatientFIO(event.target.value)}
@@ -66,28 +66,28 @@ const AddModal = (): React.ReactElement => {
               <DatePicker
                 mask='__.__.____'
                 value={patientBirthDate}
-                label='Дата рождения'
+                label='Birth date'
                 onChange={(newValue: any) => setBirthDate(newValue)}
                 renderInput={(params: any) => <TextField {...params} size='small' />}
               />
             </div>
           </LocalizationProvider>
           <TextField
-            placeholder='Запрос пациента'
+            placeholder='Patient request'
             size='small'
             value={patientRequest}
             onChange={(event: any) => setPatientRequest(event.target.value)}
             required
           />
           <TextField
-            placeholder='Название фонда'
+            placeholder='Fund name'
             size='small'
             value={fundName}
             onChange={(event: any) => setFundName(event.target.value)}
             required
           />
           <TextField
-            placeholder='Запрос фонда'
+            placeholder='Fund request'
             size='small'
             value={fundRequest}
             onChange={(event: any) => setFundRequest(event.target.value)}
@@ -95,7 +95,7 @@ const AddModal = (): React.ReactElement => {
           />
           <div className="manager-field" aria-required>
           <Typography
-                children={'Выберете ответственного'}
+                children={'Choose manager'}
                 align='center'
                 margin={1}
                 color='secondary'
@@ -103,10 +103,10 @@ const AddModal = (): React.ReactElement => {
             <div className="manager-field-icon">
               <div>
               <Typography
-                children={manager.name ? manager.name : 'Ответственный'}
+                children={manager.name ? manager.name : 'Manager'}
               />
                 <Typography
-              children={speciality ? speciality : 'Специальность'}
+              children={speciality ? speciality : 'Speciality'}
             />
             </div>
               <ArrowDropDownCircleIcon onClick={() => setOpen(state => !state)} />
@@ -115,7 +115,7 @@ const AddModal = (): React.ReactElement => {
           </div>
         </div>
         <Button size='small' variant='contained' className='add-button' type='submit'>
-          <Loader title='Добавить задание' isLoading={status === 'pending'} />
+          <Loader title='Add report' isLoading={status === 'pending'} />
         </Button>
       </form>
     </div>

@@ -16,7 +16,7 @@ const PatientInfo = (): React.ReactElement => {
   const dispatch = useDispatch()
   return <div className="patient-info">
     <TextField
-      placeholder='Исаев Гитинамагомед Магомедович'
+      placeholder='Isaev Murad Akhmedovich'
       size='small'
       value={patientName}
       fullWidth
@@ -28,7 +28,7 @@ const PatientInfo = (): React.ReactElement => {
           mask='__.__.____'
           value={patientBirthDate}
           toolbarPlaceholder='19.06.87'
-          label='Дата рождения'
+          label='Birth date'
           onChange={(newValue: any) =>  applications?.update && dispatch(changePatientBirthDate(newValue))}
           renderInput={(params: any) => <TextField {...params} size='small' />}
         />

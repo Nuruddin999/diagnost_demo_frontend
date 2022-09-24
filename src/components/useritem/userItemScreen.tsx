@@ -63,62 +63,62 @@ const UserItemScreen = ({ isProfile, id, onClose }: userItem): React.ReactElemen
       <div className='user-info-block'>
         <div className="user-info">
           <Typography fontWeight='bold'>
-            Имя
+            Name
           </Typography>
           <Typography children={name} className='user-info-name' />
         </div>
         <div className="user-info">
           <Typography fontWeight='bold'>
-            Роль
+            Role
           </Typography>
           <Typography children={role} className='user-info-name' />
         </div>
         {users?.update ? <Specialities speciality={speciality} setSpeciality={(e)=>dispatch(saveUserItemSpeciality(e))} /> : <div className="user-info"> <Typography fontWeight='bold'>
-          Специальность
+          Speciality
         </Typography>
           <Typography children={speciality} className='user-info-name' />
         </div>}
         <div className="user-info">
           <Typography fontWeight='bold'>
-            Телефон
+            Phone
           </Typography>
           <TextField size='small' disabled={!users?.update} value={phone} className='user-info-name' onChange={(e) => dispatch(savePhone(e.target.value))} />
         </div>
         <div className="user-info">
           <Typography fontWeight='bold'>
-            email
+            Email
           </Typography>
           <Typography children={email} className='user-info-name' />
         </div>
       </div>
-      <Typography margin={2} variant='h6'>Фото подписи</Typography>
+      <Typography margin={2} variant='h6'>Signature image</Typography>
       {urlSignPath && <div className='sign-img'>
         <img src={urlSignPath} width='200px' height='100px' />
         <Typography>{signFileName}</Typography>
       </div>}
       {users?.update && <div className={'upload-section'}>
         <FileUpload files={files} setFiles={setFiles} />
-        <Button onClick={updateFile} disabled={isEmpty(files)}>Загрузить</Button>
+        <Button onClick={updateFile} disabled={isEmpty(files)}>Upload</Button>
         {fileUploadStatus === 'pending' && <CircularProgress size={20} />}
         {fileUploadStatus === 'error' && <Typography>{errorMessage}</Typography>}
       </div>}
       <Typography variant='h6' gutterBottom className='rights-title'>
-        Права
+        Rights
       </Typography>
       <div className='rights-section'>
         <Typography>
         </Typography>
         <Typography>
-          Создание
+          Create
         </Typography>
         <Typography>
-          Просмотр
+          Read
         </Typography>
         <Typography>
-          Правка
+          Update
         </Typography>
         <Typography>
-          Удаление
+          Delete
         </Typography>
         {rights?.map((right) => <React.Fragment  key={right.entity}>
           <Typography align='left'>
@@ -134,7 +134,7 @@ const UserItemScreen = ({ isProfile, id, onClose }: userItem): React.ReactElemen
         </Typography>}
       </div>
       <div className='save-button'>
-        <CommonButton title='Сохранить' onClick={() => dispatch(updatePrimaryData(email,speciality,phone))} />
+        <CommonButton title='Save' onClick={() => dispatch(updatePrimaryData(email,speciality,phone))} />
       </div>
 
     </div> : <div className="user-item-loader"><Typography>{errorMessage}</Typography></div>}

@@ -72,7 +72,7 @@ const Dashboard = (): React.ReactElement => {
             </Link>
             <Link to='/main/table'>
               <ListItemText>
-                Заключения
+              medical reports
               </ListItemText>
             </Link>
           </div>}
@@ -84,7 +84,7 @@ const Dashboard = (): React.ReactElement => {
             </Link>
             <Link to='/main/users'>
               <ListItemText>
-                Пользователи
+                users
               </ListItemText>
             </Link>
           </div>}

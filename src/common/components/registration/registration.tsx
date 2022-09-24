@@ -28,11 +28,11 @@ export const Registration = ({ notHaveSuperUser }: { notHaveSuperUser?: boolean 
   const onSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
     if (!speciality) {
-      errorDispatching('Введите специальность')
+      errorDispatching('Type speciality')
       return
     }
     else if (isEmpty(files)) {
-      errorDispatching('Загрузите фото подписи')
+      errorDispatching('Upload signature image')
       return
     }
     dispatch(registerUser({ email, password, name, speciality, phone, role: notHaveSuperUser ? 'superadmin' : role, files }))
@@ -53,7 +53,7 @@ export const Registration = ({ notHaveSuperUser }: { notHaveSuperUser?: boolean 
   const renderRegisterButton = () => {
     if (addUserStatus === 'ok') {
       return <Typography className='success-reg' align='center'>
-        Пользователь успешно зарегистрирован
+        User successfully created
       </Typography>
     }
     else if (addUserStatus === 'no') {
@@ -63,7 +63,7 @@ export const Registration = ({ notHaveSuperUser }: { notHaveSuperUser?: boolean 
     }
     else {
       return <Button className='login-button' fullWidth variant='contained' disableElevation type='submit'>
-      <Loader title='Зарегистрировать' isLoading={addUserStatus === 'pending'} />
+      <Loader title='Register' isLoading={addUserStatus === 'pending'} />
     </Button>
     }
 
@@ -81,10 +81,10 @@ export const Registration = ({ notHaveSuperUser }: { notHaveSuperUser?: boolean 
       {
         notHaveSuperUser && <div className={'nosuperuser-title'}>
           <Typography variant='h4' >
-            Добро пожаловать в систему
+          Wellcome to service
           </Typography>
           <Typography>
-            Зарегистрируйте главного администратора
+            Create new main administrator
           </Typography></div>
       }
       <div className={"auth-container"}>
@@ -103,7 +103,7 @@ export const Registration = ({ notHaveSuperUser }: { notHaveSuperUser?: boolean 
             required
             size='small'
             fullWidth
-            placeholder='Пароль'
+            placeholder='Password'
             margin='normal'
             onChange={(event) => setPassword(event?.target.value)} />
           <div>
@@ -113,7 +113,7 @@ export const Registration = ({ notHaveSuperUser }: { notHaveSuperUser?: boolean 
               required
               size='small'
               fullWidth
-              placeholder='ФИО'
+              placeholder='Name'
               margin='normal'
               onChange={(event) => setName(event?.target.value)} />
       <Specialities  speciality={speciality} setSpeciality={setSpeciality}/>
@@ -123,11 +123,11 @@ export const Registration = ({ notHaveSuperUser }: { notHaveSuperUser?: boolean 
               required
               size='small'
               fullWidth
-              placeholder='Телефон'
+              placeholder='Phone'
               margin='normal'
               onChange={(event) => setPhone(event?.target.value)} />
-            <Typography align='left' >Роль</Typography>
-            {notHaveSuperUser ? <Typography align='left' >Главный администратор </Typography> : <Select
+            <Typography align='left' >Role</Typography>
+            {notHaveSuperUser ? <Typography align='left' >Main administrator </Typography> : <Select
               onChange={(event) => setRole(event.target.value)}
               autoWidth
               required
@@ -135,10 +135,10 @@ export const Registration = ({ notHaveSuperUser }: { notHaveSuperUser?: boolean 
               variant='standard'
               className={'select'}
             >
-              <MenuItem value={'admin'}>Администратор</MenuItem>
-              <MenuItem value={'doctor'}>Врач</MenuItem>
+              <MenuItem value={'admin'}>Administrator</MenuItem>
+              <MenuItem value={'doctor'}>Doctor</MenuItem>
             </Select>}
-            <Typography align='left' >Фото для подписи</Typography>
+            <Typography align='left' >Signature image</Typography>
      <FileUpload files={files} setFiles={setFiles} />
             {renderRegisterButton()}
           </div>

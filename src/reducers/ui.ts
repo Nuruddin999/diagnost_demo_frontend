@@ -8,7 +8,8 @@ export interface UiState {
   isCircular: boolean,
   fileProgress: number,
   fileUploadStatus: string,
-  errorMessage: string
+  errorMessage: string,
+  language:string
 
 }
 
@@ -20,7 +21,8 @@ const initialState: UiState = {
   isCircular: false,
   fileProgress: 0,
   fileUploadStatus: 'none',
-  errorMessage:''
+  errorMessage:'',
+  language:'en'
 };
 
 

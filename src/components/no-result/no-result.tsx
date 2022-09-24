@@ -10,7 +10,7 @@ const NoResult = (): React.ReactElement => {
         <DoNotDisturbAltIcon fontSize='large'/>
         <div>
             <Typography>
-                Нет данных, добавьте данные в табилцу
+                empty please add data
             </Typography>
         </div>
     </div>

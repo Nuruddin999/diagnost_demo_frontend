@@ -42,7 +42,7 @@ const ApplicationItem = (): React.ReactElement => {
   return userItemStatus === 'pending' ? <RoundLoader /> : <div className="application-item">
     {userItemStatus === 'updated' && <div className='upload-snakebar'>
       <Typography variant='h6' alignContent='center'>
-        сохранено
+        saved
       </Typography>
     </div>}
     {userItemStatus === 'no' && <div className='upload-snakebar'>
@@ -50,21 +50,21 @@ const ApplicationItem = (): React.ReactElement => {
         {errorMessage}
       </Typography>
     </div>}
-    <h2>РЕКОМЕНДАЦИИ ВРАЧА</h2>
-    <h4 className='only-for-inner-warning'>(ВНИМАНИЕ! ДОКУМЕНТ ИСКЛЮЧИТЕЛЬНО ДЛЯ ВНУТРЕННЕГО ПОЛЬЗОВАНИЯ ОРГАНИЗАЦИИ)
+    <h2>DOCTOR'S RECOMMENDATIONS</h2>
+    <h4 className='only-for-inner-warning'>(WARNING! THIS DOCUMNET IS FOR INNER USAGE ONLY)
     </h4>
     <PatientInfo />
-    <h3>На основании: </h3>
-    <h5> (указать основания: жалобы, симптомы, синдромы подозрения врача и пр.) </h5>
+    <h3> On the ground of: </h3>
+    <h5> (indicate the reasons: complaints, symptoms, syndromes, doctor's suspicion  and so on) </h5>
     <Anamnesis />
     <ConsiliumDoctorsForm />
     <DiagnosticForm />
     <MostProbDiagnosis />
-    <h4>На основании проведенного консилиума рекомендован план обследования (ПО):</h4>
+    <h4>On the basis of helded consilium is recommended survey plan:</h4>
     <CheckupPlanForm />
     <Comments />
     <Button onClick={handleClick} size='medium' variant='contained' className='save-button'>
-      Сохранить
+      Save
     </Button>
     <a href={`/flpdf/${id}`} target='_blank' rel="noreferrer"><IconButton size='medium'>
       <PictureAsPdfIcon className='only-for-inner-warning' />

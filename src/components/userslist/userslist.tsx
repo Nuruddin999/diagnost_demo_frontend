@@ -37,12 +37,12 @@ const UsersList = (): React.ReactElement => {
   const deleteAppl = (value: string) => {
     dispatch(deleteUser(value));
   };
-  const tableData = ['№', { title: 'ФИО', field: name, onChange: setUserName }, { title: 'Роль', field: role, onChange: setUserRole }, { title: 'Должность', field: speciality, onChange: setUserPosition }, { title: 'Email', field: email, onChange: setUserEmail }, { title: 'Контакты', field: phone, onChange: setUserPhone }, 'Удалить']
+  const tableData = ['№', { title: 'Name', field: name, onChange: setUserName }, { title: 'Role', field: role, onChange: setUserRole }, { title: 'Speciality', field: speciality, onChange: setUserPosition }, { title: 'Email', field: email, onChange: setUserEmail }, { title: 'Contacts', field: phone, onChange: setUserPhone }, 'Delete']
   const roles = {
-    doctor: 'Врач',
-    admin: 'Админ',
-    superadmin: 'Главный админ',
-    coordinator: 'Координатор'
+    doctor: 'Doctor',
+    admin: 'Admin',
+    superadmin: 'Super admin',
+    coordinator: 'Coordinator'
   }
   const changeHandler = (e: any, field: string, callback: (title: string) => void) => {
     if (e.target.value.length > 2) {
@@ -62,7 +62,7 @@ const UsersList = (): React.ReactElement => {
   return <div className='add-appl-container'>
     {isModalOpened && <AddModal />}
     <div className='add-button-wrapper'>
-      {applUserRights?.create && <CommonButton title='Новый пользователь' onClick={() => dispatch(openModal(true))} />}
+      {applUserRights?.create && <CommonButton title='New user' onClick={() => dispatch(openModal(true))} />}
     </div>
     <div>
       <div className="appl-table">
@@ -82,7 +82,7 @@ const UsersList = (): React.ReactElement => {
                         onChange={(e) => debouncedChangeHandler(e, el.field, el.onChange)}
                         type="text"
                         size="small"
-                        placeholder="Поиск"
+                        placeholder="Search"
                       />
                     }
                   </div>

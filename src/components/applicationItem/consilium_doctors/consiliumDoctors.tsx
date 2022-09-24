@@ -9,10 +9,12 @@ import './style.consiliumdoctors.scss'
 import NoResult from "../../no-result/no-result";
 import { selectApplicationUserRights } from "../../../common/selectors/user";
 import Specialities from "../../../common/components/specialities/specialities";
+import { localization } from "../../../constants";
 
 const ConsiliumDoctorsForm = (): React.ReactElement => {
   const dispatch = useDispatch()
   const consiliumDoctorsProp = useSelector((state: RootState) => state.applicationItem.consiliumDoctors)
+  const {language} = useSelector((state: RootState) => state.ui)
   const { processedRights } = useSelector((state: RootState) => selectApplicationUserRights(state))
   const { applications } = processedRights
   const [fio, setFio] = useState('')
@@ -24,8 +26,8 @@ const ConsiliumDoctorsForm = (): React.ReactElement => {
     dispatch(deleteConsiliumDoctors(index))
   }
   return <div>
-    <h3>Проведен дистанционный врачебный консилиум в составе:</h3>
-    <h5>(указать ФИО и специальности врачей, которые участвовали в формировании заключения)</h5>
+    <h3>{localization.consiliumIncluding[language as keyof typeof localization.consiliumIncluding]}</h3>
+    <h5>{localization.writeNameWhoTakePart[language as keyof typeof localization.writeNameWhoTakePart]}</h5>
     {consiliumDoctorsProp.length > 0 ? <table>
       <thead>
         <tr>
@@ -36,12 +38,12 @@ const ConsiliumDoctorsForm = (): React.ReactElement => {
           </th>
           <th>
             <span>
-              ФИО
+             Name
             </span>
           </th>
           <th>
             <span>
-              Специализация
+              Specialization
             </span>
           </th>
           <th>
@@ -56,14 +58,14 @@ const ConsiliumDoctorsForm = (): React.ReactElement => {
             variant='standard'
             size='small'
             fullWidth
-            placeholder='ФИО'
+            placeholder='Name'
           /></td>
           <td>    <TextField
             value={consDoctor.speciality}
             variant='standard'
             size='small'
             fullWidth
-            placeholder='специальность'
+            placeholder='Specialization'
           /></td>
           <td><IconButton disabled={!applications?.update} className='delete-button' onClick={() => deleteDoctor(index)}>
             <DeleteOutlineIcon />
@@ -71,7 +73,7 @@ const ConsiliumDoctorsForm = (): React.ReactElement => {
         </tr>)}
       </tbody>
     </table> : <NoResult />}
-    <Typography>Добавить доктора в табилцу</Typography>
+    <Typography>Add doctor in table</Typography>
     <div className="add-in-table-section">
       <div className='speciality-fio'>
         <TextField
@@ -79,7 +81,7 @@ const ConsiliumDoctorsForm = (): React.ReactElement => {
           variant='outlined'
           fullWidth
           size='small'
-          placeholder='ФИО'
+          placeholder='Name'
           onChange={(e) => setFio(e.target.value)}
         />
       </div>

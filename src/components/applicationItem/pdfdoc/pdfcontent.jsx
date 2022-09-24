@@ -260,16 +260,16 @@ function MyDocContent({ applItem, isDeletedPlace, status}) {
           <View style={{ ...styles.commonSize, ...styles.hdr, marginBottom: 5 }} fixed>
             <Image src={hopedoc} style={styles.hdrimg} />
             <View>
-              <Text>г Махачкала, ул Тестовая 11</Text>
-              <Text>7 этаж 709 кабинет</Text>
-              <Text>Тел. +7(999)00177707</Text>
+              <Text>Makhachkala,Testovaya street</Text>
+              <Text>floor 7 cabinet 709</Text>
+              <Text>Phone +7(999)00177707</Text>
             </View>
           </View>
           <Text style={styles.recomenTitle}>
             {status}
           </Text>
           <Text style={{ ...styles.commonSize, ...styles.subtitle }}>
-            (ВНИМАНИЕ! ДОКУМЕНТ ИСКЛЮЧИТЕЛЬНО ДЛЯ ВНУТРЕННЕГО ПОЛЬЗОВАНИЯ ОРГАНИЗАЦИИ)
+          (WARNING! THIS DOCUMNET IS FOR INNER USAGE ONLY)
           </Text>
           <View style={{ ...styles.commonSize, ...styles.birthWrapper }}>
             {patientName ? <View style={styles.birth}>
@@ -277,7 +277,7 @@ function MyDocContent({ applItem, isDeletedPlace, status}) {
                 {patientName}
               </Text>
               <Text style={styles.birthText}>
-                ФИО
+                Name
               </Text>
             </View> : <View></View>}
             {patientBirthDate ? <View style={styles.birth}>
@@ -285,26 +285,26 @@ function MyDocContent({ applItem, isDeletedPlace, status}) {
                 {`${date}.${month}.${yearsOld} г.р. (${age} лет)`}
               </Text>
               <Text style={styles.birthText}>
-                Дата рождения
+                Birth date
               </Text>
             </View> : <View></View>}
           </View>
-          <Text style={styles.reasonTitle}>На основании: </Text>
-          <Text style={styles.reasonSubTitle}> (указать основания: жалобы, симптомы, синдромы подозрения врача и пр.): </Text>
+          <Text style={styles.reasonTitle}>On the ground of:  </Text>
+          <Text style={styles.reasonSubTitle}> (indicate the reasons: complaints, symptoms, syndromes, doctor's suspicion  and so on): </Text>
           <View style={{ ...styles.commonSize, ...styles.anamnesisSection }}>
-            {complaint ? <Text style={styles.complaintTitle}><Text style={styles.complaintTitleFirstWord}>Жалоб: </Text> {complaint}</Text> : null}
-            {anamnesis ? <Text style={styles.complaintTitle}><Text style={styles.complaintTitleFirstWord}>Анамнеза: </Text>{anamnesis}
+            {complaint ? <Text style={styles.complaintTitle}><Text style={styles.complaintTitleFirstWord}>Complaints: </Text> {complaint}</Text> : null}
+            {anamnesis ? <Text style={styles.complaintTitle}><Text style={styles.complaintTitleFirstWord}>Anamnesis: </Text>{anamnesis}
             </Text> : null}
-            {diagnosticData ? <Text style={styles.complaintTitle}><Text style={styles.complaintTitleFirstWord}>Данных обследования: </Text>{diagnosticData}</Text> : null}
+            {diagnosticData ? <Text style={styles.complaintTitle}><Text style={styles.complaintTitleFirstWord}>Examination data: </Text>{diagnosticData}</Text> : null}
           </View>
           <View>
-            <Text style={{ ...styles.reasonTitle, marginTop: 12 }} wrap={false}>Проведен дистанционный врачебный консилиум в составе:</Text>
-            <Text style={{ ...styles.reasonTitle, fontSize: 10, marginTop: 4 }}>(указать ФИО и специальности врачей, которые участвовали в формировании заключения): </Text>
+            <Text style={{ ...styles.reasonTitle, marginTop: 12 }} wrap={false}>Remote concilium is lead including:</Text>
+            <Text style={{ ...styles.reasonTitle, fontSize: 10, marginTop: 4 }}>(Write name and specialities of doctors who took part in making summary): </Text>
             {consiliumDoctors ? <View style={{ ...styles.commonSize, ...styles.tabl, marginTop: 10 }} wrap={false}>
               <View style={styles.tableRow}>
                 <Text style={{ ...styles.tablHeaderNum, fontFamily: 'Times New Roman Bold' }}>№</Text>
-                <Text style={{ ...styles.tablHeaderFIO, fontFamily: 'Times New Roman Bold' }}>ФИО врача</Text>
-                <Text style={{ ...styles.tablHeaderFIO, fontFamily: 'Times New Roman Bold' }}>Специальность</Text>
+                <Text style={{ ...styles.tablHeaderFIO, fontFamily: 'Times New Roman Bold' }}>Name</Text>
+                <Text style={{ ...styles.tablHeaderFIO, fontFamily: 'Times New Roman Bold' }}>Speciality</Text>
               </View>
               {consiliumDoctors.map((consiliumDoctor, index) => <View style={styles.tableRow} wrap={false}>
                 <Text style={styles.tablHeaderNum}>{index + 1}</Text>
@@ -314,12 +314,12 @@ function MyDocContent({ applItem, isDeletedPlace, status}) {
             </View> : null}
           </View>
           <View style={{ marginTop: 14, ...styles.commonSize }}>
-            <Text style={{ fontFamily: 'Times New Roman Bold' }}>С целью проведения дифференциальной диагностики между</Text>
-            <Text style={{ fontFamily: 'Times New Roman Bold', fontSize: 10 }}>(указать заболевания, факты и симптомы клинической картины, которых частично или полностью соответствуют заболеванию)</Text>
+            <Text style={{ fontFamily: 'Times New Roman Bold' }}>With purpose of differential diagnostics</Text>
+            <Text style={{ fontFamily: 'Times New Roman Bold', fontSize: 10 }}>(indicate disease, facts and symptoms of clinical finding, which partially or  in full way corresponds to disease )</Text>
             <View style={{ ...styles.tabl, marginTop: 10 }}>
               <View style={styles.tableRow}>
                 <Text style={{ ...styles.tablHeaderNum, fontFamily: 'Times New Roman Bold' }}>№</Text>
-                <Text style={{ ...styles.tablHeaderDiagnosis, fontFamily: 'Times New Roman Bold' }}>Диагноз</Text>
+                <Text style={{ ...styles.tablHeaderDiagnosis, fontFamily: 'Times New Roman Bold' }}>Diagnosis</Text>
               </View>
               {diagnostic.map((diagnosis, index) => <View style={styles.tableRow} wrap={false}>
                 <Text style={styles.tablHeaderNum}>{index + 1}</Text>
@@ -330,8 +330,7 @@ function MyDocContent({ applItem, isDeletedPlace, status}) {
           <View style={{ marginTop: 14, ...styles.commonSize }}>
             <View style={styles.probableDiagnosis} wrap={false}>
               <Text style={styles.probableDiagnosisNum}>
-                Выявлен наиболее вероятный
-                основной диагноз:
+              Most probable diagnosis detected:
               </Text>
               <Text style={{ ...styles.probableDiagnosisText, padding: 5 }}>
                 {mostProblDiagnosis}
@@ -339,7 +338,7 @@ function MyDocContent({ applItem, isDeletedPlace, status}) {
             </View>
             <View style={styles.secondaryDiagnosis} wrap={false}>
               <Text style={styles.probableDiagnosisNum}>
-                Выявлены сопутствующие диагнозы:
+              Secondary diagnosises detected:
               </Text>
               <Text style={{ ...styles.probableDiagnosisText, padding: 5 }}>
                 {secondaryDiagnosis}
@@ -349,13 +348,13 @@ function MyDocContent({ applItem, isDeletedPlace, status}) {
           <View style={{ marginTop: 14, ...styles.commonSize }}>
             {checkupPlans.length > 0 ? <View style={styles.tabl} wrap={false}>
               <Text style={{ fontFamily: 'Times New Roman Bold' }} wrap={false}>
-                На основании проведенного консилиума рекомендован план лечения (ПЛ):
+              On the basis of helded consilium is recommended survey plan:
               </Text>
               <View style={{ ...styles.tableRow, alignItems: 'center' }} wrap={false}>
                 <Text style={{ ...styles.tablHeaderNum, fontFamily: 'Times New Roman Bold' }}>№</Text>
-                <Text style={styles.tablHeaderTypeExamine}>Вид обледования</Text>
-                {(!isDeletedPlace || status) && <Text style={styles.tablHeaderPlaceExamine}>Место</Text>}
-                <Text style={styles.tablHeaderTargetExamine}>Цель проведения обследования</Text>
+                <Text style={styles.tablHeaderTypeExamine}>Examination type</Text>
+                {(!isDeletedPlace || status) && <Text style={styles.tablHeaderPlaceExamine}>Place</Text>}
+                <Text style={styles.tablHeaderTargetExamine}>Aim of medical examination</Text>
               </View>
               {checkupPlans.map((checkUpPlan, index) => <View style={styles.tableRow} wrap={false}>
                 <Text style={styles.tablHeaderNum}>{index + 1}</Text>
@@ -365,7 +364,7 @@ function MyDocContent({ applItem, isDeletedPlace, status}) {
               </View>)}
             </View> : null}
             {comments ? <View style={styles.tabl}>
-              <Text style={{ fontFamily: 'Times New Roman Bold', marginTop: 14, textAlign: 'left' }} wrap={false}>Пояснения:</Text>
+              <Text style={{ fontFamily: 'Times New Roman Bold', marginTop: 14, textAlign: 'left' }} wrap={false}>Explanations:</Text>
               {comments.map((comment, index) => <View style={{ ...styles.commentsWrapper, marginTop: 14 }} wrap={false}>
                 <Text style={styles.commentsNum}>{index + 1}</Text>
                 <Text style={styles.commentsSecText}>{comment.comment}</Text>

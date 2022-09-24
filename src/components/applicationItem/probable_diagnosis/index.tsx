@@ -14,8 +14,7 @@ const MostProbDiagnosis = (): React.ReactElement => {
   const dispatch = useDispatch()
   return <>
     <div className="most-probbl-diagnosis">
-      <h4>Выявлен наиболее вероятный
-        основной диагноз:  </h4>
+      <h4> Most probable diagnosis detected:  </h4>
       <TextField
         fullWidth
         placeholder='Последствия ОЧМТ (огнестрельное ранение) – ушиба ГМ
@@ -32,8 +31,7 @@ const MostProbDiagnosis = (): React.ReactElement => {
       />
     </div>
     <div className="most-probbl-diagnosis">
-      <h4>Выявлены сопутствующие
-        диагнозы: </h4>
+      <h4>Secondary diagnosises detected: </h4>
       <TextField
         fullWidth
         placeholder='Хронический тонзиллит'

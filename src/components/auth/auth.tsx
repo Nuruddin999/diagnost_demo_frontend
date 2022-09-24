@@ -9,8 +9,8 @@ import { login } from "../../actions/user";
 import { setError } from "../../reducers/ui";
 
 export const Auth = (): React.ReactElement => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('admin@gmail.com')
+  const [password, setPassword] = useState('admin')
   const { user } = useSelector((state: RootState) => state.user)
   const { isCircular, errorMessage } = useSelector((state: RootState) => state.ui)
   const dispatch = useDispatch()
@@ -26,7 +26,19 @@ export const Auth = (): React.ReactElement => {
   }, [errorMessage])
 
   return <div className={'auth-wrapper'}>
+      <Typography variant='h2'>
+      Medical report service - demo version
+    </Typography>
     <div className={"auth-container"}>
+    <Typography>
+     login: <strong>admin@gmail.com</strong>
+    </Typography>
+    <Typography>
+     password: <strong>admin</strong>
+    </Typography>
+    <Typography>
+     After login with these crecentials you may also create your own users and login with them
+    </Typography>
       <form onSubmit={(event) => onSubmit(event)} data-testid='loginform'>
         <TextField value={email}
           type='email'
@@ -42,7 +54,7 @@ export const Auth = (): React.ReactElement => {
           required
           size='small'
           fullWidth
-          placeholder='Пароль'
+          placeholder='Password'
           margin='normal'
           onChange={(event) => setPassword(event?.target.value)} />
 
@@ -50,7 +62,7 @@ export const Auth = (): React.ReactElement => {
           {errorMessage}
         </Typography>}
         <Button className='login-button' fullWidth variant='contained' disableElevation type='submit'>
-          <Loader title='Войти' isLoading={isCircular} />
+          <Loader title='Sign in' isLoading={isCircular} />
         </Button>
       </form>
       {user.role !== '' && <Redirect to='/main/table' />}

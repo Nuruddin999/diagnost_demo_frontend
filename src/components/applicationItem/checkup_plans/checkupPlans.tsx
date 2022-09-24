@@ -10,6 +10,7 @@ import NoResult from "../../no-result/no-result";
 import CloseIcon from '@mui/icons-material/Close';
 import { changeIsDeletedPlaceAction } from "../../../actions/user";
 import { selectApplicationUserRights } from "../../../common/selectors/user";
+import { localization } from "../../../constants";
 
 
 const CheckupPlanForm = (): React.ReactElement => {
@@ -17,6 +18,7 @@ const CheckupPlanForm = (): React.ReactElement => {
   const checkupPlansProp = useSelector((state: RootState) => state.applicationItem.checkupPlans)
   const {  email, isDeletedPlace } = useSelector((state: RootState) => state.user.user)
   const { applications, checkupPlanPlace } = useSelector((state: RootState) => selectApplicationUserRights(state)).processedRights
+  const { language  } = useSelector((state: RootState) => state.ui )
   const [kind, setKind] = useState('')
   const [place, setPlace] = useState('')
   const [target, setTarget] = useState('')
@@ -46,15 +48,15 @@ const CheckupPlanForm = (): React.ReactElement => {
         </th>
         <th>
           <span>
-            Вид обследования
+           {localization.examinationType[language as keyof typeof localization.examinationType]}
           </span>
         </th>
         {!isDeletedPlace && <th>
           <span>
-            Место
+          {localization.place[language as keyof typeof localization.place]}
           </span>
         </th>}
-        <th>Цель проведения обследования</th>
+        <th>{localization.medicalQuestion[language as keyof typeof localization.medicalQuestion]}</th>
         <th>
         </th>
       </tr>
@@ -66,7 +68,7 @@ const CheckupPlanForm = (): React.ReactElement => {
             variant='standard'
             size='small'
             fullWidth
-            placeholder='Вид обследования'
+            placeholder={localization.examinationType[language as keyof typeof localization.examinationType]}
             onChange={(e) => applications?.update && dispatch(changeCheckupPlan({ index, checkupPlan: { kind: e.target.value, place: checkupPlan.place, target: checkupPlan.target } }))}
           /></td>
           {!isDeletedPlace && <td>
@@ -75,7 +77,7 @@ const CheckupPlanForm = (): React.ReactElement => {
               variant='standard'
               size='small'
               fullWidth
-              placeholder='Место'
+              placeholder={localization.place[language as keyof typeof localization.place]}
               onChange={(e) =>  applications?.update && dispatch(changeCheckupPlan({ index, checkupPlan: { kind: checkupPlan.kind, place: e.target.value, target: checkupPlan.target } }))}
             />
           </td>}
@@ -84,7 +86,7 @@ const CheckupPlanForm = (): React.ReactElement => {
             variant='standard'
             size='small'
             fullWidth
-            placeholder='Цель проведения обследования'
+            placeholder={localization.medicalQuestion[language as keyof typeof localization.medicalQuestion]}
             onChange={(e) => applications?.update && dispatch(changeCheckupPlan({ index, checkupPlan: { kind: checkupPlan.kind, place: checkupPlan.place, target: e.target.value } }))}
           /></td>
           <td><IconButton disabled={!applications?.update} className='delete-button' onClick={() => deletePlan(index)}>
@@ -93,14 +95,14 @@ const CheckupPlanForm = (): React.ReactElement => {
         </tr>)}
       </tbody>
     </table> : <NoResult />}
-    <Typography>Добавить план обследования в таблицу</Typography>
+    <Typography>{localization.examinationPlan[language as keyof typeof localization.examinationPlan]}</Typography>
     <div className="add-in-table-section">
       <TextField
         value={kind}
         variant='outlined'
         size='small'
         fullWidth
-        placeholder='Вид обследования'
+        placeholder={localization.examinationType[language as keyof typeof localization.examinationType]}
         onChange={(e) => setKind(e.target.value)}
       />
       <div className='place'>
@@ -116,16 +118,16 @@ const CheckupPlanForm = (): React.ReactElement => {
           variant='outlined'
           size='small'
           fullWidth
-          placeholder='Место'
+          placeholder={localization.place[language as keyof typeof localization.place]}
           onChange={(e) => setPlace(e.target.value)}
-        /> : <Button onClick={sendBroadcastMessage}>показать</Button>}
+        /> : <Button onClick={sendBroadcastMessage}>{localization.show[language as keyof typeof localization.show ]}</Button>}
       </div>
       <TextField
         value={target}
         variant='outlined'
         size='small'
         fullWidth
-        placeholder='Цель проведения обследования'
+        placeholder={localization.medicalQuestion[language as keyof typeof localization.medicalQuestion]}
         onChange={(e) => setTarget(e.target.value)}
       /> <IconButton disabled={!applications?.update} onClick={addConsliliumDoctor} >
         <AddCircleIcon className='add-in-table-svg ' />

@@ -34,7 +34,7 @@ const ReportList = (): React.ReactElement => {
   const deleteAppl = (value: number) => {
     dispatch(deleteOneApplication(value.toString()));
   };
-  const tableData = ['№', { title: 'ФИО пациента', field: patientName, onChange: setPatientName }, 'Дата рождения', { title: 'Запрос пациента', field: patientRequest, onChange: setPatientRequest }, { title: 'Название фонда', field: fundName, onChange: setFundName }, { title: 'Запрос фонда', field: fundRequest, onChange: setFundRequest }, { title: 'Ответственный', field: manager, onChange: setManager }, 'Дата создания', 'Дата исполнения', 'Удалить']
+  const tableData = ['№', { title: 'Patient name', field: patientName, onChange: setPatientName }, 'Birth date', { title: 'Patient request', field: patientRequest, onChange: setPatientRequest }, { title: 'Fund name', field: fundName, onChange: setFundName }, { title: 'Fund request', field: fundRequest, onChange: setFundRequest }, { title: 'manager', field: manager, onChange: setManager }, 'Created', 'Finished', 'Delete']
 
   const changeHandler = (e: any, field: string, callback: (title: string) => void) => {
     if (e.target.value.length > 2) {
@@ -73,7 +73,7 @@ const ReportList = (): React.ReactElement => {
     {isModalOpened && <AddModal />}
     <div className='add-button-wrapper'>
       {rights.processedRights.applications?.create && <Button size='small' variant='contained' className='add-button' onClick={() => dispatch(openModal(true))}>
-        <Typography>Новое заключение</Typography>
+        <Typography>New report</Typography>
       </Button>}
     </div>
     <div className="appl-table">
@@ -90,7 +90,7 @@ const ReportList = (): React.ReactElement => {
                   onChange={(e) => debouncedChangeHandler(e, el.field, el.onChange)}
                   type="text"
                   size="small"
-                  placeholder="Поиск"
+                  placeholder="Search"
                 />
               }
             </div>

@@ -22,8 +22,8 @@ const DiagnosticForm = (): React.ReactElement => {
       dispatch(deleteDiagnostic(index))
    }
    return <div>
-      <h3>С целью проведения дифференциальной диагностики между</h3>
-      <h5>(указать заболевания, факты и симптомы клинической картины, которых частично или полностью соответствуют заболеванию)</h5>
+      <h3>With purpose of differential diagnostics</h3>
+      <h5>(indicate disease, facts and symptoms of clinical finding, which partially or  in full way corresponds to disease )</h5>
    { diagnosticProp.length > 0 ? <table>
          <thead>
          <tr>
@@ -34,7 +34,7 @@ const DiagnosticForm = (): React.ReactElement => {
             </th>
             <th>
                <span>
-                  Диагноз
+               Diagnosis
                </span>
             </th>
             <th>
@@ -49,7 +49,7 @@ const DiagnosticForm = (): React.ReactElement => {
                   variant='standard'
                   size='small'
                   fullWidth
-                  placeholder='диагноз'
+                  placeholder='diagnosis'
                   onChange={(e) => applications?.update && dispatch(changeDiagnostic({ index, diagnosis: e.target.value }))}
                /></td>
                <td><IconButton disabled={!applications?.update} className='delete-button' onClick={() => removeDiagnostic(index)}>
@@ -58,14 +58,14 @@ const DiagnosticForm = (): React.ReactElement => {
             </tr>)}
          </tbody>
       </table> : <NoResult />}
-      <Typography>Добавить диагноз в табилцу</Typography>
+      <Typography>Add diagnosis in table</Typography>
       <div className='add-in-table-section'>
       <TextField
          value={diagnosis}
          variant='outlined'
          size='small'
          fullWidth
-         placeholder='Диагноз'
+         placeholder='diagnosis'
          onChange={(e) => setDiagnosis(e.target.value)}
       />
       <IconButton  disabled={!applications?.update} onClick={addDiagnosis} >
