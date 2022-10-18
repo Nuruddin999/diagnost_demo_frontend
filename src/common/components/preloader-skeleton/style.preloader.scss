@@ -1,0 +1,21 @@
+.preloader {
+  span {
+    background: #939699;
+  color:#939699;
+  animation: preload-anim 1s linear infinite alternate;
+  }
+
+}
+@keyframes preload-anim {
+  0% {
+    background: #dfe4e7;
+    color:#dfe4e7;
+  }
+  100% {
+    background: #d6d7d8;
+    color: #d6d7d8
+  }
+};
+.delete-button {
+    color: crimson;
+}

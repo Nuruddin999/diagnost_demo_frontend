@@ -17,6 +17,7 @@ import { useUsers } from "../../common/hooks/useUsers";
 import UserItemScreen from "../useritem/userItemScreen";
 import { CommonButton } from "../../common/components/button";
 import BlockIcon from '@mui/icons-material/Block';
+import { Preloader } from "../../common/components/preloader-skeleton/preloader";
 
 const UsersList = (): React.ReactElement => {
   const dispatch = useDispatch()
@@ -104,9 +105,9 @@ const UsersList = (): React.ReactElement => {
                   <DeleteOutlineIcon />
                 </IconButton></td>
               </tr>)}
+              {status === 'pending' && <Preloader  tdNum={[1,2,3,4,5,6,7]}/>}
             </tbody>
           </table>
-          {status === 'pending' && <div className='userlist-loader'> <CircularProgress /> </div>}
           {status === 'ok' && isEmpty(users.filter(el=>el.id !=='2')) && <div><BlockIcon sx={{fontSize:'40px',marginTop:'20px'}} /> </div>}
           <div className="pagination">
             {count > 10 && <Pagination

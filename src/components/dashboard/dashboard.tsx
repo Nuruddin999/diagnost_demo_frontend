@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Switch,
   Route,
@@ -21,12 +21,15 @@ import UserItem from "../useritem";
 import { selectApplicationUserRights } from "../../common/selectors/user";
 import { RoundLoader } from "../../common/components/roundloader";
 import GitHubIcon from '@mui/icons-material/GitHub';
+import UserItemScreen from "../useritem/userItemScreen";
+import classNames from "classnames";
 
 const Dashboard = (): React.ReactElement => {
   const { user, hasSuperUser } = useSelector((state: RootState) => state.user)
-  const { name } = user
+  const { name, id } = user
   const rights = useSelector((state: RootState) => selectApplicationUserRights(state))
   const isCircular = useSelector((state: RootState) => state.ui.isCircular)
+  const [currentUserId, setCurrentUserId] = useState('')
   const dispatch = useDispatch()
   const logOut = () => dispatch(logOutUser())
   useEffect(() => {
@@ -114,6 +117,7 @@ const Dashboard = (): React.ReactElement => {
       </div>
       {name === 'empty' && <Redirect to='/auth' />}
     </div>}
+    <div className={classNames('user-item-block', currentUserId ? 'user-item-block-open' : 'user-item-block-closed')}><UserItemScreen isProfile onClose={setCurrentUserId} /></div>
   </div>
 }
 export default Dashboard
