@@ -30,6 +30,7 @@ const Dashboard = (): React.ReactElement => {
   const rights = useSelector((state: RootState) => selectApplicationUserRights(state))
   const isCircular = useSelector((state: RootState) => state.ui.isCircular)
   const [currentUserId, setCurrentUserId] = useState('')
+  console.log(currentUserId)
   const dispatch = useDispatch()
   const logOut = () => dispatch(logOutUser())
   useEffect(() => {
@@ -55,7 +56,8 @@ const Dashboard = (): React.ReactElement => {
         </a>
         </div>
         <div className='user-block'>
-          <Link to='/main/aboutme'>
+          <Link to='#'  onClick={()=>{
+            setCurrentUserId(id)}}>
             <Typography variant="body1" >
               {name}
             </Typography>
